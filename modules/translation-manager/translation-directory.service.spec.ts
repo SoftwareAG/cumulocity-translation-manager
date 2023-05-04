@@ -79,7 +79,7 @@ describe('TranslationDirectoryService', () => {
     it('It should add the translationData locally for Save call', () => {
       // given
       service.applicationOptions = new ApplicationOptions();
-      const entry = { de: 'Deutsch translation11' };
+      const entry = { de: 'Deutsch translation11', id: '' };
 
       // when
       service.saveTranslationLocally(entry, false);
@@ -94,7 +94,7 @@ describe('TranslationDirectoryService', () => {
       // given
       service.applicationOptions = new ApplicationOptions();
       service.applicationOptions.i18nExtra = { de: { test: 'testu' } };
-      const entry = { de: 'Deutsch translation11', translationKey: 'test' };
+      const entry = { de: 'Deutsch translation11', id: 'test' };
 
       // when
       service.saveTranslationLocally(entry, true);
@@ -107,7 +107,7 @@ describe('TranslationDirectoryService', () => {
       // given
       const data = {
         de: 'abc',
-        translationKey: 'abc123',
+        id: 'abc123',
       };
 
       // when
@@ -121,7 +121,7 @@ describe('TranslationDirectoryService', () => {
       // given
       const data = {
         de: '',
-        translationKey: '',
+        id: '',
       };
 
       // when
@@ -136,7 +136,7 @@ describe('TranslationDirectoryService', () => {
       const entry: TranslationEntry = {
         de: '   Deutsch translation  ',
         en: '',
-        translationKey: ' color ',
+        id: ' color ',
       };
 
       // when
@@ -146,7 +146,7 @@ describe('TranslationDirectoryService', () => {
       expect(normalizedVal).toStrictEqual({
         de: 'Deutsch translation',
         en: undefined,
-        translationKey: 'color',
+        id: 'color',
       });
     });
   });

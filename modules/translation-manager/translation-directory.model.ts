@@ -1,5 +1,6 @@
 export interface TranslationEntry {
-  [translationKey: string]: string;
+  id: string;
+  [key: string]: string;
 }
 
 export interface I18nExtra {

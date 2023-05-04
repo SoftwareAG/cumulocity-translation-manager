@@ -16,22 +16,22 @@
             class="form-control"
             placeholder="{{ 'e.g. Group' | translate }}"
             type="text"
-            formControlName="translationKey"
-            [(ngModel)]="languageFormModel.translationKey"
+            formControlName="id"
+            [(ngModel)]="languageFormModel.id"
             required
           />
           <c8y-messages>
             <c8y-message
               *ngIf="
-                !formGroup.get('translationKey').untouched &&
-                (!languageFormModel.translationKey ||
-                  formGroup.controls['translationKey'].errors?.invalidName)
+                !formGroup.get('id').untouched &&
+                (!languageFormModel.id ||
+                  formGroup.controls['id'].errors?.invalidName)
               "
               translate
               >This field is required.
             </c8y-message>
             <c8y-message
-              *ngIf="!formGroup.untouched && formGroup.controls['translationKey'].errors?.nameTaken"
+              *ngIf="!formGroup.untouched && formGroup.controls['id'].errors?.nameTaken"
               translate
               >Name is already taken.</c8y-message
             >
@@ -59,7 +59,7 @@
       [ngClass]="{ 'btn-pending': pendingStatus }"
       (click)="onSaveButtonClicked()"
       [disabled]="
-        (languageFormModel.translationKey && languageFormModel.translationKey.trim() === '') ||
+        (languageFormModel.id && languageFormModel.id.trim() === '') ||
         !formGroup.valid
       "
       translate

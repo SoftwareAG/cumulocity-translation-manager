@@ -66,7 +66,7 @@ export class ManageTranslationCellRendererComponent {
         gettext(
           'You are going to remove the last translation for key "{{ key }}", so the key will be deleted. Do you want to proceed?'
         ),
-        { key: this.context.item.translationKey }
+        { key: this.context.item.id }
       );
       await this.c8yModalService.confirm(title, body, Status.WARNING);
       this.directoryService.deleteTranslationItem.emit(this.context.item);

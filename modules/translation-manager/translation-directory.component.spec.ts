@@ -23,7 +23,7 @@ describe('TranslationDirectoryComponent', () => {
 
   const selectedItem: TranslationEntry = {
     de: 'de',
-    translationKey: 'embassy',
+    id: 'embassy',
   };
 
   beforeEach(async () => {
@@ -35,7 +35,7 @@ describe('TranslationDirectoryComponent', () => {
       saveOptionsJson: jest.fn(),
       saveTranslationLocally: jest.fn(),
       getUserConfiguredColumns: jest.fn(),
-      getAssetTranslationKeys: jest.fn(),
+      getAssetids: jest.fn(),
       getI18nExtra: jest.fn(),
       saveConfig$: jest.fn(),
       applyConfigToColumns: jest.fn(),
@@ -110,8 +110,8 @@ describe('TranslationDirectoryComponent', () => {
         .spyOn(directoryServiceMock, 'getI18nExtra')
         .mockReturnValue([{ de: 'Deutsch translation' }]);
       jest
-        .spyOn(directoryServiceMock, 'getAssetTranslationKeys')
-        .mockReturnValue([{ translationKey: 'Building' }]);
+        .spyOn(directoryServiceMock, 'getAssetids')
+        .mockReturnValue([{ id: 'Building' }]);
 
       // when
       component.ngOnInit();
@@ -128,7 +128,7 @@ describe('TranslationDirectoryComponent', () => {
       component.translationsDataCopy = [
         {
           de: 'en',
-          translationKey: 'embassy1',
+          id: 'embassy1',
         },
       ];
       jest.spyOn(c8yModalServiceMock, 'confirm').mockReturnValue('');
@@ -181,7 +181,7 @@ describe('TranslationDirectoryComponent', () => {
           },
           languageFormModel: {
             de: 'si',
-            translationKey: 'Site11',
+            id: 'Site11',
           },
         },
         hide: jest.fn(),
@@ -195,7 +195,7 @@ describe('TranslationDirectoryComponent', () => {
       expect(component.translationsData).toHaveLength(2);
       expect(component.translationsData).toContainEqual({
         de: 'si',
-        translationKey: 'Site11',
+        id: 'Site11',
         isDeleteActionEnabled: true,
       });
       expect(component.isTranslationsDataChanged).toBe(true);
@@ -220,7 +220,7 @@ describe('TranslationDirectoryComponent', () => {
       component.translationsDataCopy = [
         {
           de: 'en',
-          translationKey: 'embassy1',
+          id: 'embassy1',
         },
       ];
       const event = {
@@ -240,7 +240,7 @@ describe('TranslationDirectoryComponent', () => {
       component.translationsDataCopy = [
         {
           de: 'en',
-          translationKey: 'embassy1',
+          id: 'embassy1',
         },
       ];
 
@@ -258,7 +258,7 @@ describe('TranslationDirectoryComponent', () => {
       component.translationsDataCopy = [
         {
           de: 'en',
-          translationKey: 'embassy1',
+          id: 'embassy1',
         },
       ];
 

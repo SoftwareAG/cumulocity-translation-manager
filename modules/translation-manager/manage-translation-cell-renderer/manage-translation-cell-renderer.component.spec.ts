@@ -27,7 +27,7 @@ describe('ManageTranslationCellRendererComponent', () => {
     };
 
     contextMock = new CellRendererContext();
-    contextMock.item = { translationKey: 'asset' };
+    contextMock.item = { id: 'asset' };
     contextMock.property = { name: 'de', path: 'de' };
 
     component = new ManageTranslationCellRendererComponent(
@@ -106,7 +106,7 @@ describe('ManageTranslationCellRendererComponent', () => {
       // expect
       expect(translationDirectoryServiceMock.validateTranslationIsProvided('sample')).toBe(true);
       expect(spyDirectoryService).toHaveBeenCalled();
-      expect(component.context.item).toStrictEqual({ de: '', translationKey: 'asset' });
+      expect(component.context.item).toStrictEqual({ de: '', id: 'asset' });
     });
 
     it('User clicking on Cancel icon should cancel the changes', () => {

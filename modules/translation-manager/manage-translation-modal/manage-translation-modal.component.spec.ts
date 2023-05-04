@@ -35,7 +35,7 @@ describe('ManageTranslationModalComponent', () => {
       pl: undefined,
       pt_BR: undefined,
       ru: undefined,
-      translationKey: null,
+      id: null,
       zh_CN: undefined,
       zh_TW: undefined
     };
@@ -93,7 +93,7 @@ describe('ManageTranslationModalComponent', () => {
         nl: 'nl',
         pl: 'pl',
         pt_BR: 'pt_BR',
-        translationKey: null,
+        id: null,
         ru: 'ru',
         zh_CN: 'zh_CN',
         zh_TW: 'zh_TW'
@@ -104,7 +104,7 @@ describe('ManageTranslationModalComponent', () => {
       component.ngOnInit();
 
       // expect
-      expect(component.formGroup.controls['translationKey'].enabled).toBe(true);
+      expect(component.formGroup.controls['id'].enabled).toBe(true);
       expect(component.formGroup.value).toEqual(formGroupValue);
     });
 

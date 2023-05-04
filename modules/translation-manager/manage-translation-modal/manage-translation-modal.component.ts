@@ -24,7 +24,7 @@ export class ManageTranslationModalComponent implements OnInit {
   langCodes: string[];
   isInputTextDisabled = true;
   formGroup: FormGroup;
-  languageFormModel: TranslationEntry = {};
+  languageFormModel: TranslationEntry = { id: ''};
   isTranslationProvided = true;
   pendingStatus: boolean = false;
 
@@ -42,10 +42,10 @@ export class ManageTranslationModalComponent implements OnInit {
     this.formGroup = this.formBuilder.group(formControls);
 
     if (this.translationEntry) {
-      this.formGroup.controls['translationKey'].disable();
+      this.formGroup.controls['id'].disable();
       this.updateModel();
     } else {
-      this.formGroup.controls['translationKey'].enable();
+      this.formGroup.controls['id'].enable();
     }
   }
 
@@ -73,21 +73,21 @@ export class ManageTranslationModalComponent implements OnInit {
     this.onClose.emit();
   }
 
-  validateTranslationKey(): ValidatorFn {
+  validateid(): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       if (control.value && !control.value.trim()) {
         return { invalidName: true };
       }
-      const isFound = find(this.translationsData, { translationKey: control.value });
+      const isFound = find(this.translationsData, { id: control.value });
       return isFound ? { nameTaken: true } : null;
     };
   }
 
-  private buildForm(isNewKey: boolean): { translationKey: FormControl } {
-    this.canChangeTranslationKey(isNewKey);
+  private buildForm(isNewKey: boolean): { id: FormControl } {
+    this.canChangeid(isNewKey);
     const formControls = {
-      translationKey: new FormControl(this.languageFormModel.translationKey, {
-        validators: isNewKey ? [this.validateTranslationKey()] : [],
+      id: new FormControl(this.languageFormModel.id, {
+        validators: isNewKey ? [this.validateid()] : [],
         updateOn: 'blur'
       })
     };
@@ -106,10 +106,10 @@ export class ManageTranslationModalComponent implements OnInit {
     return formControls;
   }
 
-  private canChangeTranslationKey(isNewKey: boolean): void {
+  private canChangeid(isNewKey: boolean): void {
     this.isInputTextDisabled = !isNewKey;
     if (isNewKey) {
-      this.languageFormModel.translationKey = undefined;
+      this.languageFormModel.id = undefined;
     }
   }
 }
